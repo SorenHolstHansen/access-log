@@ -1,4 +1,4 @@
-# tally
+# object-scout
 
 ## 0.1.0
 
