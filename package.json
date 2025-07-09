@@ -1,7 +1,9 @@
 {
   "name": "access-log",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Track how often each key of an object is accessed — useful for debugging, analytics, or building observability into your code.",
+  "keywords": ["debugging", "analytics", "observability"],
+  "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
   "repository": {
@@ -12,16 +14,13 @@
     "url": "git+https://github.com/SorenHolstHansen/access-log/issues"
   },
   "scripts": {
+    "changeset:add": "changeset",
+    "changeset:publish": "changeset publish",
     "format": "npx @biomejs/biome check --write .",
     "test": "node --import tsx --test \"src/**/*.test.ts\""
   },
-  "keywords": [
-    "debugging",
-    "analytics",
-    "observability"
-  ],
-  "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "^2.1.1"
+    "@biomejs/biome": "^2.1.1",
+    "@changesets/cli": "^2.29.5"
   }
 }
