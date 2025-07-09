@@ -1,5 +1,5 @@
 {
-  "name": "access-log",
+  "name": "tally",
   "version": "0.1.0",
   "description": "Track how often each key of an object is accessed — useful for debugging, analytics, or building observability into your code.",
   "keywords": [
@@ -12,10 +12,10 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SorenHolstHansen/access-log.git"
+    "url": "git+https://github.com/SorenHolstHansen/tally.git"
   },
   "bugs": {
-    "url": "git+https://github.com/SorenHolstHansen/access-log/issues"
+    "url": "git+https://github.com/SorenHolstHansen/tally/issues"
   },
   "scripts": {
     "changeset:add": "changeset",
@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.1",
-    "@changesets/cli": "^2.29.5"
+    "@changesets/cli": "^2.29.5",
+    "tsx": "^4.20.3"
   }
 }

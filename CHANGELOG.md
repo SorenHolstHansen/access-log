@@ -1,4 +1,4 @@
-# access-log
+# tally
 
 ## 0.1.0
 

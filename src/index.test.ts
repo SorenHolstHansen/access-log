@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { accessLog } from "./index.js";
+import { tally } from "./index.js";
 
 test("Simple index test", () => {
-  const a = accessLog({
+  const a = tally({
     foo: "bar",
   });
 
@@ -12,11 +12,11 @@ test("Simple index test", () => {
     a.foo;
   }
 
-  assert.strictEqual(a.__access_log.foo.count, iter);
+  assert.strictEqual(a.__tally.foo.count, iter);
 });
 
 test("nested objects", () => {
-  const a = accessLog({
+  const a = tally({
     foo: {
       bar: "baz",
     },
@@ -24,12 +24,12 @@ test("nested objects", () => {
 
   a.foo.bar;
 
-  assert.deepEqual(a.__access_log.foo.inner.bar.count, 1);
+  assert.deepEqual(a.__tally.foo.inner.bar.count, 1);
 });
 
-test("__access_log is 'distributive'", () => {
-  // We test that calling __access_log on the root object and then traversing down to the path gives the same result as traversing down to the path, then asking for __access_log
-  const a = accessLog({
+test("__tally is 'distributive'", () => {
+  // We test that calling __tally on the root object and then traversing down to the path gives the same result as traversing down to the path, then asking for __tally
+  const a = tally({
     foo: {
       bar: "baz",
     },
@@ -37,11 +37,11 @@ test("__access_log is 'distributive'", () => {
 
   a.foo.bar;
 
-  assert.deepEqual(a.__access_log.foo.inner.bar, a.foo.__access_log.bar);
+  assert.deepEqual(a.__tally.foo.inner.bar, a.foo.__tally.bar);
 });
 
-test("__access_log show stats of keys not present in the original object", () => {
-  const a = accessLog({
+test("__tally show stats of keys not present in the original object", () => {
+  const a = tally({
     foo: "bar",
   });
 
@@ -49,22 +49,22 @@ test("__access_log show stats of keys not present in the original object", () =>
   a.baz;
 
   // @ts-ignore
-  assert.strictEqual(a.__access_log.baz.count, 1);
+  assert.strictEqual(a.__tally.baz.count, 1);
 });
 
 test("Arrays work", () => {
-  const a = accessLog([1, 2, 3]);
+  const a = tally([1, 2, 3]);
 
   a[1];
 
-  assert.strictEqual(a.__access_log[1]?.count, 1);
+  assert.strictEqual(a.__tally[1]?.count, 1);
 });
 
 test("Arrays of objects work", () => {
-  const a = accessLog([{ foo: "bar" }, 1, { b: 2 }]);
+  const a = tally([{ foo: "bar" }, 1, { b: 2 }]);
 
   // @ts-ignore
   a[0]?.foo;
 
-  assert.strictEqual(a.__access_log[0]?.inner.foo?.count, 1);
+  assert.strictEqual(a.__tally[0]?.inner.foo?.count, 1);
 });
