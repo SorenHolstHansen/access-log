@@ -1,21 +1,17 @@
 {
-  "name": "tally",
+  "name": "object-scout",
   "version": "0.1.0",
   "description": "Track how often each key of an object is accessed — useful for debugging, analytics, or building observability into your code.",
-  "keywords": [
-    "debugging",
-    "analytics",
-    "observability"
-  ],
+  "keywords": ["debugging", "analytics", "observability"],
   "license": "MIT",
   "main": "src/index.ts",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SorenHolstHansen/tally.git"
+    "url": "git+https://github.com/SorenHolstHansen/object-scout.git"
   },
   "bugs": {
-    "url": "git+https://github.com/SorenHolstHansen/tally/issues"
+    "url": "git+https://github.com/SorenHolstHansen/object-scout/issues"
   },
   "scripts": {
     "changeset:add": "changeset",

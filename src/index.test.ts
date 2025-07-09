@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { tally } from "./index.js";
+import { objectScout } from "./index.js";
 
 test("Simple index test", () => {
-  const a = tally({
+  const a = objectScout({
     foo: "bar",
   });
 
@@ -12,11 +12,11 @@ test("Simple index test", () => {
     a.foo;
   }
 
-  assert.strictEqual(a.__tally.foo.count, iter);
+  assert.strictEqual(a.__object_scout.foo.count, iter);
 });
 
 test("nested objects", () => {
-  const a = tally({
+  const a = objectScout({
     foo: {
       bar: "baz",
     },
@@ -24,12 +24,12 @@ test("nested objects", () => {
 
   a.foo.bar;
 
-  assert.deepEqual(a.__tally.foo.inner.bar.count, 1);
+  assert.deepEqual(a.__object_scout.foo.inner.bar.count, 1);
 });
 
-test("__tally is 'distributive'", () => {
-  // We test that calling __tally on the root object and then traversing down to the path gives the same result as traversing down to the path, then asking for __tally
-  const a = tally({
+test("__object_scout is 'distributive'", () => {
+  // We test that calling __object_scout on the root object and then traversing down to the path gives the same result as traversing down to the path, then asking for __object_scout
+  const a = objectScout({
     foo: {
       bar: "baz",
     },
@@ -37,11 +37,11 @@ test("__tally is 'distributive'", () => {
 
   a.foo.bar;
 
-  assert.deepEqual(a.__tally.foo.inner.bar, a.foo.__tally.bar);
+  assert.deepEqual(a.__object_scout.foo.inner.bar, a.foo.__object_scout.bar);
 });
 
-test("__tally show stats of keys not present in the original object", () => {
-  const a = tally({
+test("__object_scout show stats of keys not present in the original object", () => {
+  const a = objectScout({
     foo: "bar",
   });
 
@@ -49,22 +49,22 @@ test("__tally show stats of keys not present in the original object", () => {
   a.baz;
 
   // @ts-ignore
-  assert.strictEqual(a.__tally.baz.count, 1);
+  assert.strictEqual(a.__object_scout.baz.count, 1);
 });
 
 test("Arrays work", () => {
-  const a = tally([1, 2, 3]);
+  const a = objectScout([1, 2, 3]);
 
   a[1];
 
-  assert.strictEqual(a.__tally[1]?.count, 1);
+  assert.strictEqual(a.__object_scout[1]?.count, 1);
 });
 
 test("Arrays of objects work", () => {
-  const a = tally([{ foo: "bar" }, 1, { b: 2 }]);
+  const a = objectScout([{ foo: "bar" }, 1, { b: 2 }]);
 
   // @ts-ignore
   a[0]?.foo;
 
-  assert.strictEqual(a.__tally[0]?.inner.foo?.count, 1);
+  assert.strictEqual(a.__object_scout[0]?.inner.foo?.count, 1);
 });
