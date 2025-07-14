@@ -1,5 +1,11 @@
 # object-scout
 
+## 0.2.1
+
+### Patch Changes
+
+- 0c1b550: export types as well
+
 ## 0.2.0
 
 ### Minor Changes
