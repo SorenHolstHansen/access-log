@@ -17,6 +17,7 @@
   "scripts": {
     "build": "tsc",
     "changeset:add": "changeset",
+    "prechangeset:publish": "npm run build",
     "changeset:publish": "changeset publish",
     "format": "npx @biomejs/biome check --write .",
     "test": "node --import tsx --test \"src/**/*.test.ts\""
