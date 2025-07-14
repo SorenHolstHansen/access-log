@@ -1,10 +1,11 @@
 {
   "name": "object-scout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Track how often each key of an object is accessed — useful for debugging, analytics, or building observability into your code.",
   "keywords": ["debugging", "analytics", "observability"],
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
@@ -14,6 +15,7 @@
     "url": "git+https://github.com/SorenHolstHansen/object-scout/issues"
   },
   "scripts": {
+    "build": "tsc",
     "changeset:add": "changeset",
     "changeset:publish": "changeset publish",
     "format": "npx @biomejs/biome check --write .",
