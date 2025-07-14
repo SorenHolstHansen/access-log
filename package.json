@@ -1,12 +1,18 @@
 {
   "name": "object-scout",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Track how often each key of an object is accessed — useful for debugging, analytics, or building observability into your code.",
-  "keywords": ["debugging", "analytics", "observability"],
+  "keywords": [
+    "debugging",
+    "analytics",
+    "observability"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SorenHolstHansen/object-scout.git"

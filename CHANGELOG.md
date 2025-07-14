@@ -1,5 +1,11 @@
 # object-scout
 
+## 0.2.2
+
+### Patch Changes
+
+- 1ada3cb: remove as module
+
 ## 0.2.1
 
 ### Patch Changes
